@@ -31,3 +31,12 @@ esses números são primos entre si*:
 True
 > primosEntreSi 400 30
 False-}
+
+primosEntreSi :: Int -> Int -> Bool
+primosEntreSi x y = testaDivisores x y 2
+    where 
+        testaDivisores :: Int -> Int -> Int -> Bool
+        testaDivisores x y n | x == n = True
+                             | y == n = True
+                             | (x `mod` n == 0) && (y `mod` n == 0) = False
+                             | otherwise = testaDivisores x y (n+1)
