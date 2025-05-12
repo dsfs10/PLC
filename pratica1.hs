@@ -36,7 +36,6 @@ primosEntreSi :: Int -> Int -> Bool
 primosEntreSi x y = testaDivisores x y 2
     where 
         testaDivisores :: Int -> Int -> Int -> Bool
-        testaDivisores x y n | x == n = True
-                             | y == n = True
-                             | (x `mod` n == 0) && (y `mod` n == 0) = False
+        testaDivisores x y n | (x `mod` n == 0) && (y `mod` n == 0) = False
+                             | (x == n) || (y == n) = True
                              | otherwise = testaDivisores x y (n+1)
