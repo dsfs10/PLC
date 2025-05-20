@@ -14,8 +14,8 @@ main = do
 V 2.0
 maquinaSomar :: [Int] -> [Int]
 maquinaSomar (a:(b:as)) | a /= 0 && b == 0 = [a]              
-                        | b /= 0 = maquinaSomar (a+b:as)
                         | a == 0 && b == 0 = []
+                        | b /= 0 = maquinaSomar (a+b:as)
 
 main = do
        lista <- getLine
