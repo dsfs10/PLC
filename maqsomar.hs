@@ -9,3 +9,14 @@ maquinaSomar (a:(b:as)) | a /= 0 && b == 0 = [a]
 main = do
        lista <- getLine
        print $ maquinaSomar (read lista :: [Int])
+
+------------------------------------------------------------
+V 2.0
+maquinaSomar :: [Int] -> [Int]
+maquinaSomar (a:(b:as)) | a /= 0 && b == 0 = [a]              
+                        | b /= 0 = maquinaSomar (a+b:as)
+                        | a == 0 && b == 0 = []
+
+main = do
+       lista <- getLine
+       print $ maquinaSomar (read lista :: [Int])
