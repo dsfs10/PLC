@@ -15,3 +15,8 @@ maxFun f n = (maxFun f (n-1)) `max` (f n)
 total :: (Int->Int)-> Int -> Int
 total f 0 = f 0
 total f n = total f (n-1) + f n
+
+-- map (já tem no prelude)
+map :: (t -> u) -> [t] -> [u]
+map f [] = []
+map f (a:as) = f a : map f as
