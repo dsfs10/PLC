@@ -13,4 +13,8 @@ square :: Int -> Int
 square x = x * x
 
 sumPrimeSquares1 :: Int -> Int -> Int -- sumPrimeSquares1 30 50 -> 8069
-sumPrimeSquares1 x y = foldr1 (+) (map square (filter ehPrimo [x..y])) 
+sumPrimeSquares1 x y = foldr1 (+) (map square (filter ehPrimo [x..y]))
+
+-- Ou
+sumPrimeSquares2 :: Int -> Int -> Int
+sumPrimeSquares2 x y = foldr1 (+) (map (\x -> x * x) (filter ehPrimo [x..y]))
