@@ -16,21 +16,29 @@ merge (a:as) (b:bs) | a >= b = b : merge (a:as) bs
 
 -- Questão 3
 type Pilha t = [t]
-data Elemento = Valor Int | Soma | Multiplica 
-    deriving (Show)
+data Elemento = Valor Int | Soma | Multiplica deriving (Show)
 
 exemploPilhaElem :: Pilha Elemento
 exemploPilhaElem = [Valor 10, Valor 20, Soma, Valor 30, Multiplica]
 
-verifica :: Elemento -> String
-verifica (Valor n) = show n
-verifica Soma = "+"
-verifica Multiplica = "*"
+aux :: Pilha Elemento -> String
+aux ((Valor x):as) = show x
+aux ((Soma):a:b:bs) = "(" ++ aux (b:bs) ++ "+" ++ aux (a:b:bs) ++ ")"
+aux ((Multiplica):a:b:bs) = "(" ++ aux (b:bs) ++ "*" ++ aux (a:b:bs) ++ ")"
+
 
 gera_string :: Pilha Elemento -> String
 gera_string [] = []
-gera_string (a:(b:abs)) | verifica a == "+"
-                        | verifica a == "*"
-                        | otherwise = a : gera_string (b:abs)
+gera_string stack = aux (reverse stack)
 
 -- exemplo de uso: gera_string exemploPilhaElem ——> "((10+20)*30)"
+
+-- Questão 4
+aux2 :: Pilha Elemento -> Int
+aux2 ((Valor x):as) = x
+aux2 ((Soma):a:b:bs) = aux2 (a:b:bs) + aux2 (b:bs)
+aux2 ((Multiplica):a:b:bs) = aux2 (a:b:bs) * aux2 (b:bs)
+
+calcula :: Pilha Elemento -> Int
+calcula [] = 0
+calcula stack = aux2 (reverse stack)
