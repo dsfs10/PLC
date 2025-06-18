@@ -79,3 +79,19 @@ mapTree f (Node valor s_1 s_2) = Node (f valor) (mapTree f s_1) (mapTree f s_2)
    (Node False (Node True NIlT NilT) (NilT))
 
 -}
+
+-- Composição de funções
+{- (.) :: (b -> c) -> (a -> b) -> a -> c
+   f . g = \x -> f (g x) -}
+
+soma1 :: Int -> Int
+soma1 x = x + 1
+
+mult2 :: Int -> Int
+mult2 x = x * 2
+
+somaDobros = sum . map (*2)
+
+f = show . (*2) . (+1)
+
+
