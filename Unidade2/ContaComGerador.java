@@ -10,5 +10,5 @@ public class ContaComGerador {
     proximo = proximo + 1;
     return proximo;
     }
-    // ...
+    // pra alterar uma variável estática tem que ser um método estático
 }
