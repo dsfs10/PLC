@@ -1,0 +1,46 @@
+1) b e b
+2) a
+3) d
+	students -> String[10]: +1
+	studentName = "PeterParker": +1
+	students[0] -> "PeterParker": +1
+	studentName = null: -1
+	Resposta = 2
+4) b
+5) public abstract class Forma {
+    public double PosicaoX, PosicaoY;
+
+    public abstract double area();
+
+    public void move(double deltaX, double deltaY) {
+        PosicaoX += deltaX;
+        PosicaoY += deltaY;
+    } 
+}
+
+public class Circulo extends Forma {
+    public double raio;
+
+    public Circulo(double raio) {
+        this.raio = raio;
+    }
+
+    @Override
+    public double area() {
+        return 3.14 * raio * raio
+    }
+}
+
+public class Retangulo extends Forma {
+    public double lado1, lado2;
+
+    public Retangulo(double lado1, double lado2) {
+        this.lado1 = lado1;
+        this.lado2 = lado2;
+    }
+
+    @Override
+    public double area() {
+        return lado1 * lado2;
+    }
+}
